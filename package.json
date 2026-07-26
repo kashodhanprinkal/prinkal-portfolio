@@ -1,0 +1,31 @@
+{
+  "name": "prinkal",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.42.2",
+    "lightswind": "^3.2.2",
+    "lucide-react": "^1.26.0",
+    "next": "16.2.11",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-icons": "^5.7.0",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.5.4",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.11",
+    "postcss": "^8.5.23",
+    "tailwindcss": "^3.4.19"
+  }
+}
