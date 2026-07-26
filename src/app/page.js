@@ -2,6 +2,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/sections/Hero"
 import About from "@/components/sections/About"
+import Skills from "@/components/sections/Skills";
 
 
 export default function HomePage() {
@@ -11,6 +12,7 @@ export default function HomePage() {
       <main>
         <Hero />
         <About />
+        <Skills/>
         
         {/*<<section id="home" className="min-h-screen flex items-center justify-center pt-24 md:pt-32">
           <div className="text-center px-4">
