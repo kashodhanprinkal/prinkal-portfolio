@@ -1,106 +1,150 @@
 "use client";
 
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { HiArrowRight } from "react-icons/hi2";
+import { motion } from "framer-motion";
 
 export default function Footer() {
+  const socials = [
+    {
+      icon: FaGithub,
+      link: "https://github.com/yourusername",
+    },
+    {
+      icon: FaLinkedin,
+      link: "https://linkedin.com/in/yourusername",
+    },
+    {
+      icon: FaEnvelope,
+      link: "mailto:your@email.com",
+    },
+  ];
+
   return (
-    <footer className="border-t border-[#C9A882]/20 bg-[#1C1410]">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-10">
-        
-        {/* Main Content - Flex layout for compactness */}
-        <div className="flex flex-col items-center gap-5 md:flex-row md:justify-between md:gap-6">
-          
-          {/* Left Section - Brand & CTA */}
-          <div className="flex flex-col items-center md:items-start gap-2.5">
-            <h2 className="text-base sm:text-lg font-semibold tracking-tight text-[#FDF8F2]">
-              Let's build something{" "}
-              <span className="bg-gradient-to-r from-[#C9A882] via-[#B5773A] to-[#C9A882] bg-clip-text text-transparent">
-                remarkable
-              </span>
-            </h2>
-            
-            <div className="flex flex-wrap items-center gap-2">
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-1.5 rounded-full bg-[#B5773A] px-4 py-1.5 text-xs font-medium text-[#FDF8F2] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#C9A882] hover:text-[#1C1410]"
-              >
-                Hire Me
-              </a>
+    <footer className="border-t border-black/10 bg-white">
+      <div className="mx-auto max-w-6xl px-6 py-8">
 
-              <a
-                href="mailto:your@email.com"
-                className="inline-flex items-center gap-1.5 rounded-full border border-[#C9A882]/40 px-4 py-1.5 text-xs font-medium text-[#FDF8F2] transition-all duration-300 hover:border-[#B5773A] hover:bg-[#5C3D1E] hover:-translate-y-0.5"
-              >
-                Contact
-                <HiArrowRight className="text-xs" />
-              </a>
-            </div>
-          </div>
+        {/* Top */}
+        <div className="flex flex-col items-center justify-between gap-5 sm:flex-row">
 
-          {/* Right Section - Social & Status */}
-          <div className="flex flex-col items-center md:items-end gap-2.5">
-            {/* Social Icons */}
-            <div className="flex gap-4">
-              <a
-                href="https://github.com/yourusername"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#EDE0CE]/70 transition-all duration-300 hover:-translate-y-1 hover:text-[#C9A882] hover:scale-110"
-                aria-label="GitHub"
-              >
-                <FaGithub size={18} />
-              </a>
+          {/* Name */}
+          <p className="text-sm text-neutral-700">
+            © {new Date().getFullYear()}{" "}
 
-              <a
-                href="https://linkedin.com/in/yourusername"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#EDE0CE]/70 transition-all duration-300 hover:-translate-y-1 hover:text-[#C9A882] hover:scale-110"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin size={18} />
-              </a>
+            <span className="relative inline-block font-semibold text-black">
 
-              <a
-                href="mailto:your@email.com"
-                className="text-[#EDE0CE]/70 transition-all duration-300 hover:-translate-y-1 hover:text-[#C9A882] hover:scale-110"
-                aria-label="Email"
-              >
-                <FaEnvelope size={18} />
-              </a>
-            </div>
+              Prinkal Kashodhan
 
-            {/* Availability Badge - Compact */}
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#C9A882]/20 bg-[#5C3D1E]/30 px-3 py-1 text-xs font-medium text-[#EDE0CE]/80 backdrop-blur-sm">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-              </span>
-              Open to work
+              {/* free hand marker highlight */}
+              <span
+                className="
+                absolute
+                -z-10
+                left-[-8px]
+                right-[-8px]
+                bottom-0
+                h-6
+                rotate-[-3deg]
+                bg-[#D9F99D]
+                rounded-[40%_60%_45%_55%]
+                "
+              />
+
+              {/* hand drawn underline */}
+              <svg
+                className="absolute -bottom-3 left-0 w-full"
+                viewBox="0 0 150 12"
+                fill="none"
+              >
+                <path
+                  d="M3 8 C35 1,80 12,145 5"
+                  stroke="#171717"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+
+                <path
+                  d="M10 11 C50 6,100 13,135 8"
+                  stroke="#737373"
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                />
+              </svg>
+
             </span>
+
+          </p>
+
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-5">
+
+            {socials.map((item,index)=>{
+
+              const Icon = item.icon;
+
+              return(
+                <motion.a
+                  key={index}
+                  href={item.link}
+                  target="_blank"
+                  whileHover={{
+                    y:-4,
+                    scale:1.15,
+                    rotate:index % 2 === 0 ? -5 : 5
+                  }}
+                  transition={{duration:0.2}}
+                  className="
+                  text-neutral-600
+                  hover:text-black
+                  transition-all
+                  "
+                >
+                  <Icon size={18}/>
+                </motion.a>
+              )
+
+            })}
+
           </div>
+
         </div>
 
-        {/* Divider - Subtle */}
-        <div className="my-4 h-px bg-gradient-to-r from-transparent via-[#C9A882]/20 to-transparent" />
 
-        {/* Bottom Section - Compact */}
-        <div className="flex flex-col items-center justify-between gap-2 text-xs text-[#EDE0CE]/60 sm:flex-row">
-          <p>
-            © {new Date().getFullYear()} <span className="font-medium text-[#EDE0CE]/80">Prinkal Kashodhan</span>
-          </p>
+        {/* Divider */}
+        <div className="my-6 relative">
 
-          <p className="flex items-center gap-1.5">
-            <span>Crafted with</span>
-            <span className="text-[#B5773A]">☕</span>
-            <span className="text-[#C9A882]">♥</span>
-            <span>using</span>
-            <span className="font-medium text-[#EDE0CE]/80">Next.js</span>
-            <span className="hidden sm:inline">&</span>
-            <span className="font-medium text-[#EDE0CE]/80">Tailwind</span>
-          </p>
+          <svg
+            className="w-full h-3"
+            viewBox="0 0 500 10"
+            fill="none"
+          >
+            <path
+              d="M2 5 C80 1,150 9,250 5 S420 2,498 6"
+              stroke="#d4d4d4"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
+
         </div>
+
+
+        {/* Bottom */}
+        <div className="flex flex-col items-center justify-between gap-3 text-xs sm:flex-row">
+
+          <p className="font-medium text-neutral-700">
+            Crafted with ☕, curiosity & countless experiments.
+          </p>
+
+
+          <p className="font-medium text-neutral-800 text-center">
+            Crafting interfaces, chasing bugs,
+            <br className="sm:hidden" />
+            and pretending it's planned ✦
+          </p>
+
+        </div>
+
       </div>
     </footer>
   );

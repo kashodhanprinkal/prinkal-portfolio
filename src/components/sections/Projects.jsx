@@ -36,17 +36,17 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className="relative py-28">
+    <section id="projects" className="relative py-28 bg-[#F5F7F8]">
       <div className="mx-auto max-w-7xl px-6">
 
         {/* Heading */}
         <div className="text-center">
           <div className="mt-[-90]">
-            <AnimatedHeading>Projects</AnimatedHeading>
+            <AnimatedHeading variant="dark">Projects</AnimatedHeading>
           </div>
 
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground text-lg leading-8">
-            A collection of projects showcasing my skills , and continuous learning .
+          <p className="mx-auto mt-4 max-w-2xl text-[#4A4A4A] text-lg leading-8">
+            A collection of projects showcasing my skills, and continuous learning.
           </p>
         </div>
 
@@ -56,17 +56,17 @@ export default function Projects() {
           {/* Left */}
           <button
             onClick={prev}
-            className="absolute left-0 top-1/2 z-20 hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background shadow-md transition hover:scale-110 lg:flex"
+            className="absolute left-0 top-1/2 z-20 hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-[#E8ECEF] bg-white shadow-md transition hover:scale-110 hover:border-[#B5773A] hover:shadow-lg lg:flex"
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-5 w-5 text-[#1A1A1A]" />
           </button>
 
           {/* Right */}
           <button
             onClick={next}
-            className="absolute right-0 top-1/2 z-20 hidden h-12 w-12 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background shadow-md transition hover:scale-110 lg:flex"
+            className="absolute right-0 top-1/2 z-20 hidden h-12 w-12 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-[#E8ECEF] bg-white shadow-md transition hover:scale-110 hover:border-[#B5773A] hover:shadow-lg lg:flex"
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-5 w-5 text-[#1A1A1A]" />
           </button>
 
           <div className="overflow-hidden">
@@ -121,67 +121,89 @@ export default function Projects() {
               }}
               className={`h-2.5 rounded-full transition-all duration-300 ${
                 i === index
-                  ? "w-8 bg-primary"
-                  : "w-2.5 bg-muted-foreground/30"
+                  ? "w-8 bg-[#B5773A]"
+                  : "w-2.5 bg-[#D1D5DB]"
               }`}
             />
           ))}
         </div>
 
-{/* GitHub CTA - Sticker Style */}
-<motion.div
-  initial={{ opacity: 0, scale: 0.95, rotate: -2
+        {/* GitHub CTA - Sticker Style with Corner Tapes Only */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, rotate: -2 }}
+          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+          className="relative mx-auto mt-20 max-w-4xl rounded-3xl bg-white shadow-2xl shadow-black/10 border-2 border-[#E8ECEF]"
+        >
+          {/* Corner Tapes Only - No borders */}
+          {/* Top Left Tape */}
+          <div className="absolute -top-4 -left-4 h-12 w-12 rotate-[-20deg] bg-[#1A1A1A] shadow-lg border-2 border-white/30 rounded-sm flex items-center justify-center">
+            <span className="text-white/20 text-xs">✦</span>
+          </div>
+          
+          {/* Top Right Tape */}
+          <div className="absolute -top-4 -right-4 h-12 w-12 rotate-[20deg] bg-[#1A1A1A] shadow-lg border-2 border-white/30 rounded-sm flex items-center justify-center">
+            <span className="text-white/20 text-xs">✦</span>
+          </div>
+          
+          {/* Bottom Left Tape */}
+          <div className="absolute -bottom-4 -left-4 h-12 w-12 rotate-[15deg] bg-[#1A1A1A] shadow-lg border-2 border-white/30 rounded-sm flex items-center justify-center">
+            <span className="text-white/20 text-xs">✦</span>
+          </div>
+          
+          {/* Bottom Right Tape */}
+          <div className="absolute -bottom-4 -right-4 h-12 w-12 rotate-[-15deg] bg-[#1A1A1A] shadow-lg border-2 border-white/30 rounded-sm flex items-center justify-center">
+            <span className="text-white/20 text-xs">✦</span>
+          </div>
 
-   }}
-  whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.5, type: "spring" }}
-  className="relative mx-auto mt-20 max-w-4xl rounded-3xl bg-gradient-to-br from-amber-50 via-pink-50 to-purple-50 px-8 py-7 shadow-lg shadow-purple-100/50"
->
-  {/* Decorative tape/sticker corners */}
-  <div className="absolute -top-3 -left-3 h-8 w-8 rotate-[-15deg] bg-yellow-200/20 blur-[1px] shadow-sm" />
-  <div className="absolute -top-3 -right-3 h-8 w-8 rotate-[15deg] bg-pink-200/80 blur-[1px] shadow-sm" />
-  <div className="absolute -bottom-3 -left-3 h-8 w-8 rotate-[10deg] bg-blue-200/80 blur-[1px] shadow-sm" />
-  <div className="absolute -bottom-3 -right-3 h-8 w-8 rotate-[-10deg] bg-green-200/80 blur-[1px] shadow-sm" />
+          {/* Sticker dots - Edge decorations */}
+          <div className="absolute top-1/2 -left-2 h-4 w-4 rounded-full bg-[#1A1A1A]/70 shadow-lg shadow-black/10" />
+          <div className="absolute top-1/3 -right-2 h-4 w-4 rounded-full bg-[#1A1A1A]/70 shadow-lg shadow-black/10" />
+          <div className="absolute bottom-1/4 left-1/4 h-2.5 w-2.5 rounded-full bg-[#1A1A1A]/50" />
+          <div className="absolute top-1/4 right-1/4 h-2.5 w-2.5 rounded-full bg-[#1A1A1A]/50" />
 
-  {/* Sticker dots */}
-  <div className="absolute top-1/2 -left-1 h-3 w-3 rounded-full bg-yellow-400 opacity-50" />
-  <div className="absolute top-1/3 -right-1 h-3 w-3 rounded-full bg-pink-400 opacity-50" />
+          {/* Content */}
+          <div className="relative px-10 py-10">
+            <div className="flex flex-col items-center justify-between gap-8 sm:flex-row">
+              <p className="text-base font-bold text-[#1A1A1A] text-center sm:text-left leading-relaxed">
+                <span className="inline-block text-2xl mr-2">⚡</span>
+                <span className="text-lg font-black">What's brewing?</span>
+                <br className="hidden sm:block" />
+                <span className="inline-flex items-center gap-2 flex-wrap justify-center sm:justify-start mt-1">
+                  <HighlightText text="Explore" variant="circle" className="text-base font-bold" />
+                  <span className="text-[#1A1A1A]/70">my</span>
+                  <HighlightText text="GitHub" variant="underline" className="text-base font-bold" />
+                  <span className="text-[#1A1A1A]/70">→</span>
+                  <HighlightText text="more magic" variant="highlight" className="text-base font-bold" />
+                  <span className="inline-block text-base animate-spin-slow">✨</span>
+                </span>
+              </p>
 
-  <div className="relative flex flex-col items-center justify-between gap-6 sm:flex-row">
-    <p className="text-sm text-stone-700 text-center sm:text-left leading-relaxed">
-      <span className="inline-block text-xl mr-1">🎨</span>
-      <span className="font-medium">What's brewing?</span>
-      <br className="hidden sm:block" />
-      <span className="inline-flex items-center gap-1 flex-wrap justify-center sm:justify-start">
-        <HighlightText text="Explore" variant="circle" className="text-base" />
-        <span>my</span>
-        <HighlightText text="GitHub" variant="underline" className="text-base" />
-        <span>→</span>
-        <HighlightText text="more magic" variant="highlight" className="text-base" />
-        <span className="inline-block text-sm animate-spin-slow">✨</span>
-      </span>
-    </p>
+              <motion.a
+                href="https://github.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ 
+                  scale: 1.06,
+                  rotate: [0, -3, 3, 0],
+                  transition: { duration: 0.4 }
+                }}
+                whileTap={{ scale: 0.92 }}
+                className="group inline-flex shrink-0 items-center gap-3 rounded-full border-2 border-[#1A1A1A] bg-white px-8 py-3.5 text-base font-bold text-[#1A1A1A] shadow-[6px_6px_0px_0px_#1A1A1A] transition-all hover:bg-[#1A1A1A] hover:text-white hover:shadow-[6px_6px_0px_0px_#B5773A] hover:border-[#B5773A] relative overflow-hidden"
+              >
+                <FaGithub className="text-xl group-hover:scale-110 group-hover:rotate-12 transition-transform relative z-10" />
+                <span className="tracking-wide relative z-10">GitHub</span>
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1.5 group-hover:scale-110 relative z-10" />
+              </motion.a>
+            </div>
 
-    <motion.a
-      href="https://github.com/yourusername"
-      target="_blank"
-      rel="noopener noreferrer"
-      whileHover={{ 
-        scale: 1.04,
-        rotate: [0, -2, 2, 0],
-        transition: { duration: 0.5 }
-      }}
-      whileTap={{ scale: 0.9 }}
-      className="group inline-flex shrink-0 items-center gap-2.5 rounded-full border-2 border-[#393939] bg-white px-6 py-2.5 text-sm font-medium text-[#2D2016] shadow-[4px_4px_0px_0px_#2D2016] transition-all hover:bg-[#2D2016] hover:text-white hover:shadow-[4px_4px_0px_0px_#8B5CF6]"
-    >
-      <FaGithub className="text-lg" />
-      <span>GitHub</span>
-      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-    </motion.a>
-  </div>
-</motion.div>
-
+            {/* Bottom decorative text */}
+            <div className="relative mt-6 text-center text-xs font-bold text-[#1A1A1A]/40 tracking-widest uppercase border-t-2 border-[#E8ECEF] pt-4">
+              ✦  code • create • collaborate  ✦
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
