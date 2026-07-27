@@ -32,7 +32,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="px-8 py-24 bg-[#e4e5e6] overflow-hidden">
+    <section id="contact" className="px-8 py-24 bg-[#e9eaea] overflow-hidden">
       <div className="mx-auto max-w-7xl">
         {/* CONTACT */}
         <motion.div
