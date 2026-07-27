@@ -1,5 +1,6 @@
-import "./globals.css";
 
+import "./globals.css";
+import CustomCursor from "@/components/ui/CustomCursor";
 export const metadata = {
   title: "Portfolio",
   description: "My portfolio",
@@ -8,7 +9,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+
+      <body>
+        <CustomCursor />
+        {children}
+        
+      </body>
     </html>
   );
 }
