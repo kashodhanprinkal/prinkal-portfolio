@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/sections/Hero"
 import About from "@/components/sections/About"
 import Skills from "@/components/sections/Skills";
+import Projects from "@/components/sections/Projects";
 
 
 export default function HomePage() {
@@ -13,6 +14,7 @@ export default function HomePage() {
         <Hero />
         <About />
         <Skills/>
+        <Projects />
         
         {/*<<section id="home" className="min-h-screen flex items-center justify-center pt-24 md:pt-32">
           <div className="text-center px-4">
@@ -41,42 +43,8 @@ export default function HomePage() {
           </div>
         </section>*/}
 
-        {/* Skills Section */}
-        <section id="skills" className="min-h-screen py-20 px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
-              Skills
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {["React", "Next.js", "Tailwind CSS", "JavaScript", "HTML", "CSS"].map((skill) => (
-                <div key={skill} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm text-center border border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-700 dark:text-gray-300 font-medium">{skill}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* Projects Section */}
-        <section id="projects" className="min-h-screen py-20 px-4 bg-gray-50 dark:bg-gray-800/50">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
-              Projects
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {[1, 2, 3].map((project) => (
-                <div key={project} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
-                    Project {project}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Description of your project goes here.
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        
 
         {/* Contact Section */}
         <section id="contact" className="min-h-screen py-20 px-4">
