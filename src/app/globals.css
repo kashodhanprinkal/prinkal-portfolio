@@ -42,3 +42,39 @@ html {
 .animate-spin-slow {
   animation: spin-slow 8s linear infinite;
 }
+
+/* globals.css or animations.css */
+@keyframes wave {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.hover\:animate-wiggle:hover {
+  animation: wiggle 0.5s ease-in-out infinite;
+}
+
+/* Add to globals.css */
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Optional: Glow animation for accent */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+.highlight-glow {
+  animation: glowPulse 2s ease-in-out infinite;
+}
