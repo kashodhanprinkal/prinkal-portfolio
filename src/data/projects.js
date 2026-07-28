@@ -6,7 +6,7 @@ export const projects = [
     subtitle: "Full Stack Travel Booking Platform",
     description:
       "A modern travel booking platform where users can explore destinations, create listings, upload images, leave reviews, and securely manage bookings through an intuitive and responsive interface.",
-    image: "/images/projects/wanderlust.png",
+    image: "/images/wanderlust.png",
     tags: [
       "React",
       "Node.js",
@@ -27,7 +27,7 @@ export const projects = [
     subtitle: "Personal Developer Portfolio",
     description:
       "A modern portfolio showcasing my projects, technical skills, and development journey with smooth animations and responsive design.",
-    image: "/images/projects/portfolio.png",
+    image: "/images/portfolio.png",
     tags: [
       "Next.js",
       "Tailwind CSS",
@@ -46,7 +46,7 @@ export const projects = [
     subtitle: "Real-Time Chat Application",
     description:
       "A real-time messaging application with authentication, live communication, and a clean, responsive user interface built for seamless conversations.",
-    image: "/images/projects/chatsphere.png",
+    image: "/images/chatsphere.png",
     tags: [
       "React",
       "Node.js",
@@ -66,7 +66,7 @@ export const projects = [
   subtitle: "Real-Time Code Collaboration Platform",
   description:
   "Developing a real-time collaborative code editor with live synchronization and modern full-stack architecture. The project focuses on building scalable applications while gaining hands-on experience with Docker, AWS, and deployment workflows.",
-  image: "/images/projects/collaborative-editor.png",
+  image: "/images/collaborative.png",
   tags: [
     "React",
     "Node.js",
