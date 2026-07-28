@@ -5,8 +5,9 @@ import Preloader from "@/components/ui/Preloader";
 import  { Caveat } from "next/font/google"
 
 export const metadata = {
-  title: "Portfolio",
-  description: "My portfolio",
+   title: "Prinkal Kashodhan |Software Developer",
+  description:
+    "Portfolio of Prinkal Kashodhan - Frontend Developer specializing in React, Next.js, JavaScript, and modern web development.",
 };
 
 const caveat = Caveat({
