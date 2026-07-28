@@ -38,15 +38,15 @@ export default function Hero() {
   </motion.a>
 
   {/* Secondary — Download Resume */}
-  <motion.a
-    href="/resume.pdf"
-    download
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-    className="px-8 py-3 border-2 border-border rounded-full font-medium hover:bg-muted hover:border-foreground/30 transition-colors"
-  >
-    Download Resume
-  </motion.a>
+          <motion.a
+            href="/prinkal.resume.pdf"
+            download="Prinkal_Kashodhan_Resume.pdf"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-8 py-3 border-2 border-border rounded-full font-medium hover:bg-muted hover:border-foreground/30 transition-colors"
+          >
+            Download Resume
+          </motion.a>
 </div>
       </div>
     </section>
