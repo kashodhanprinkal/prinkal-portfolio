@@ -7,15 +7,15 @@ export default function Footer() {
   const socials = [
     {
       icon: FaGithub,
-      link: "https://github.com/yourusername",
+      link: "https://github.com/kashodhanprinkal",
     },
     {
       icon: FaLinkedin,
-      link: "https://linkedin.com/in/yourusername",
+      link: "https://www.linkedin.com/in/prinkal-kashodhan/",
     },
     {
       icon: FaEnvelope,
-      link: "mailto:your@email.com",
+      link: "mailto:kashodhanprinkal@gmail.com",
     },
   ];
 

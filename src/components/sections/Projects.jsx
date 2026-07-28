@@ -181,7 +181,7 @@ export default function Projects() {
               </p>
 
               <motion.a
-                href="https://github.com/yourusername"
+                href="https://github.com/kashodhanprinkal"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ 
