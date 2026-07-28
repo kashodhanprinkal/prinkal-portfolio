@@ -13,11 +13,11 @@ export default function Hero() {
         <h3 className="text-2xl md:text-4xl ">
           Hi, I'm
         </h3>
-        <h1 className="text-4xl md:text-8xl text-gray-600" >
-           Prinkal Kashodhan 
+        <h1 className="text-2xl font-extralight md:text-8xl text-gray-600" >
+           Prinkal Kashodhan....
         </h1>
         
-        <p className="mt-4 text-2xl md:text-6xl  text-stone-800 ">
+        <p className="mt-6 text-4xl md:text-6xl  text-stone-900 font-mono ">
             <TypingEffect
             words={["Frontend Developer", "JavaScript Developer", "React.js Developer", "Responsive Web Designer",]}
             typingSpeed={100}

@@ -119,52 +119,53 @@ export default function Contact() {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="max-w-xl">
-              <div className="flex overflow-hidden rounded-full border-2 border-black/20 bg-white transition-all focus-within:border-black focus-within:shadow-lg">
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className="flex-1 bg-transparent px-7 py-5 outline-none text-base placeholder:text-neutral-400"
-                />
-                <button
-                  type="submit"
-                  disabled={status === "sending"}
-                  className="flex items-center gap-2 bg-black px-8 text-white transition hover:bg-neutral-800 disabled:opacity-60"
-                >
-                  {status === "sending" ? "Sending..." : "Join"}
-                  <ArrowRight className="h-5 w-5" />
-                </button>
-              </div>
+           <form onSubmit={handleSubmit} className="w-full max-w-xl">
+  <div className="flex flex-col overflow-hidden rounded-3xl border-2 border-black/20 bg-white transition-all focus-within:border-black focus-within:shadow-lg sm:flex-row sm:rounded-full">
+    <input
+      type="email"
+      required
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      placeholder="Enter your email"
+      className="flex-1 bg-transparent px-5 py-4 text-base outline-none placeholder:text-neutral-400 sm:px-7 sm:py-5"
+    />
 
-              {status === "success" && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200 px-4 py-2.5 w-fit"
-                >
-                  <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
-                  <p className="text-sm font-medium text-emerald-700">
-                    Thanks! You're on the list 🎉
-                  </p>
-                </motion.div>
-              )}
+    <button
+      type="submit"
+      disabled={status === "sending"}
+      className="flex items-center justify-center gap-2 bg-black px-6 py-4 text-white transition hover:bg-neutral-800 disabled:opacity-60 sm:px-8 sm:py-5"
+    >
+      {status === "sending" ? "Sending..." : "Join"}
+      <ArrowRight className="h-5 w-5" />
+    </button>
+  </div>
 
-              {status === "error" && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 flex items-center gap-2 rounded-full bg-red-50 border border-red-200 px-4 py-2.5 w-fit"
-                >
-                  <XCircle className="h-4 w-4 text-red-600 shrink-0" />
-                  <p className="text-sm font-medium text-red-700">
-                    Something went wrong. Please try again.
-                  </p>
-                </motion.div>
-              )}
-            </form>
+  {status === "success" && (
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="mt-4 flex w-fit max-w-full items-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3"
+    >
+      <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
+      <p className="text-sm font-medium text-emerald-700">
+        Thanks! You're on the list 🎉
+      </p>
+    </motion.div>
+  )}
+
+  {status === "error" && (
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="mt-4 flex w-fit max-w-full items-center gap-2 rounded-2xl border border-red-200 bg-red-50 px-4 py-3"
+    >
+      <XCircle className="h-4 w-4 shrink-0 text-red-600" />
+      <p className="text-sm font-medium text-red-700">
+        Something went wrong. Please try again.
+      </p>
+    </motion.div>
+  )}
+</form>
           </div>
         </motion.div>
       </div>
