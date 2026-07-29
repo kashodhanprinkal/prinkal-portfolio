@@ -34,7 +34,7 @@ export const projects = [
       "Framer Motion",
       "JavaScript",
     ],
-    liveLink: "https://yourportfolio.com",
+    liveLink: "https://prinkal-code.netlify.app/",
     githubLink: "https://github.com/yourusername/portfolio",
     status: "Live",
     color: "blue",
