@@ -1,133 +1,51 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import Image from "next/image";
+import { ExternalLink, Code2, ArrowRight, Eye } from "lucide-react";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
-import HighlightText from "@/components/ui/HighlightText";
-import ProjectCard from "@/components/ui/ProjectCard";
 import { projects } from "@/data/projects";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
+import HighlightText from "@/components/ui/HighlightText";
+import { FaGithub } from "react-icons/fa";  //
+
+// Status badge colors
+const statusColors = {
+  Live: "bg-emerald-50 text-emerald-700 border-emerald-200",
+  "In Progress": "bg-amber-50 text-amber-700 border-amber-200",
+  Completed: "bg-sky-50 text-sky-700 border-sky-200",
+  Archived: "bg-stone-50 text-stone-500 border-stone-200",
+};
 
 export default function Projects() {
-  const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
-
-  const maxIndex = Math.max(0, projects.length - 2);
-
-  const next = () => {
-    setDirection(1);
-    setIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-  };
-
-  const prev = () => {
-    setDirection(-1);
-    setIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
-  };
-
-  const handleDragEnd = (_, info) => {
-    if (info.offset.x < -100) next();
-    if (info.offset.x > 100) prev();
-  };
-
-  const visibleProjects = [
-    projects[index],
-    projects[index + 1] || projects[0],
-  ];
-
   return (
-    <section id="projects" className="relative py-28 bg-[#F5F7F8]">
-      <div className="mx-auto max-w-7xl px-6">
-
-        {/* Heading */}
-        <div className="text-center">
-          <div className="mt-[-90]">
-            <AnimatedHeading variant="dark">Projects</AnimatedHeading>
-          </div>
-
-          <p className="mx-auto mt-4 max-w-2xl text-[#4A4A4A] text-lg leading-8">
-            A collection of projects showcasing my skills, and continuous learning.
+    <section id="projects" className="py-20 md:py-28 bg-[#F5F7F8]">
+      <div className="mx-auto max-w-6xl px-6">
+        {/* Header */}
+        <div className="mb-12 text-center md:mb-16">
+          <AnimatedHeading variant="dark">Projects</AnimatedHeading>
+          <p className="mx-auto mt-4 max-w-2xl text-[#4A4A4A] text-lg leading-relaxed">
+            A curated selection of my work — each project tells a story of problem-solving and creativity.
           </p>
         </div>
 
-        {/* Slider */}
-        <div className="relative mt-8">
-
-          {/* Left */}
-          <button
-            onClick={prev}
-            className="absolute left-0 top-1/2 z-20 hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-[#E8ECEF] bg-white shadow-md transition hover:scale-110 hover:border-[#B5773A] hover:shadow-lg lg:flex"
-          >
-            <ChevronLeft className="h-5 w-5 text-[#1A1A1A]" />
-          </button>
-
-          {/* Right */}
-          <button
-            onClick={next}
-            className="absolute right-0 top-1/2 z-20 hidden h-12 w-12 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-[#E8ECEF] bg-white shadow-md transition hover:scale-110 hover:border-[#B5773A] hover:shadow-lg lg:flex"
-          >
-            <ChevronRight className="h-5 w-5 text-[#1A1A1A]" />
-          </button>
-
-          <div className="overflow-hidden">
-            <AnimatePresence mode="wait" custom={direction}>
-              <motion.div
-                key={index}
-                custom={direction}
-                initial={{
-                  x: direction > 0 ? 250 : -250,
-                  opacity: 0,
-                  scale: 0.96,
-                }}
-                animate={{
-                  x: 0,
-                  opacity: 1,
-                  scale: 1,
-                }}
-                exit={{
-                  x: direction > 0 ? -250 : 250,
-                  opacity: 0,
-                  scale: 0.96,
-                }}
-                transition={{
-                  duration: 0.45,
-                  ease: "easeInOut",
-                }}
-                drag="x"
-                dragElastic={0.15}
-                dragConstraints={{ left: 0, right: 0 }}
-                onDragEnd={handleDragEnd}
-                className="grid grid-cols-1 gap-8 md:grid-cols-2"
-              >
-                {visibleProjects.map((project) => (
-                  <ProjectCard
-                    key={project.id}
-                    project={project}
-                  />
-                ))}
-              </motion.div>
-            </AnimatePresence>
-          </div>
+        {/* Project Rows */}
+        <div className="space-y-8">
+          {projects.map((project, index) => {
+            const isEven = index % 2 === 0;
+            
+            return (
+              <ProjectRow 
+                key={project.id} 
+                project={project} 
+                index={index} 
+                isEven={isEven} 
+              />
+            );
+          })}
         </div>
 
-        {/* Dots */}
-        <div className="mt-5 flex justify-center gap-3">
-          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                setDirection(i > index ? 1 : -1);
-                setIndex(i);
-              }}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                i === index
-                  ? "w-8 bg-[#B5773A]"
-                  : "w-2.5 bg-[#D1D5DB]"
-              }`}
-            />
-          ))}
-        </div>
-
+        {/* CTA */}
         {/* GitHub CTA - Sticker Style with Corner Tapes Only */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95, rotate: -2 }}
@@ -206,5 +124,194 @@ export default function Projects() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+// Project Row Component
+function ProjectRow({ project, index, isEven }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      className="group relative"
+    >
+      <div 
+        className={`flex flex-col gap-4 ${isEven ? "md:flex-row" : "md:flex-row-reverse"}`}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        style={{ cursor: 'none' }}
+      >
+        
+        {/* Custom Cursor */}
+        <motion.div
+          animate={{
+            scale: isHovered ? 1 : 0,
+            opacity: isHovered ? 1 : 0,
+          }}
+          transition={{ duration: 0.2 }}
+          className="pointer-events-none fixed z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[#B5773A] text-white shadow-lg"
+          style={{
+            left: 'var(--mouse-x)',
+            top: 'var(--mouse-y)',
+            transform: 'translate(-50%, -50%)',
+          }}
+        >
+          <Eye className="h-5 w-5" />
+        </motion.div>
+
+        {/* Image Side - 45% */}
+        <motion.div 
+          className="relative w-full md:w-[45%]"
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="relative h-52 w-full overflow-hidden rounded-xl bg-stone-100 shadow-sm transition-shadow duration-300 group-hover:shadow-xl md:h-64 lg:h-72">
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover transition duration-500 group-hover:scale-110"
+            />
+            
+            {/* Overlay on hover */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"
+            />
+            
+            {/* Status Badge */}
+            {project.status && (
+              <span
+                className={`absolute left-3 top-3 rounded-full border px-2.5 py-0.5 text-[10px] font-medium backdrop-blur-sm ${
+                  statusColors[project.status] || "bg-stone-50 text-stone-500 border-stone-200"
+                }`}
+              >
+                {project.status}
+              </span>
+            )}
+
+            {/* Featured Badge */}
+            {project.featured && (
+              <span className="absolute -right-2 -top-2 rotate-12 bg-[#B5773A] px-3 py-0.5 text-[10px] font-bold text-white shadow-lg">
+                ★ Featured
+              </span>
+            )}
+          </div>
+        </motion.div>
+
+        {/* Content Side - 55% */}
+        <motion.div 
+          className="flex w-full flex-col justify-center md:w-[55%] md:px-4"
+          whileHover={{ x: isEven ? 6 : -6 }}
+          transition={{ duration: 0.3 }}
+        >
+          {/* Project Number */}
+          <span className="text-xs font-medium text-[#B5773A]">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+
+          {/* Subtitle */}
+          {project.subtitle && (
+            <p className="mt-1 text-[10px] font-medium uppercase tracking-wider text-[#B5773A]">
+              {project.subtitle}
+            </p>
+          )}
+
+          {/* Title */}
+          <h3 className="mt-1 text-xl font-bold text-[#2D2016] md:text-2xl">
+            {project.title}
+          </h3>
+
+          {/* Description - shorter */}
+          <p className="mt-2 text-sm leading-relaxed text-stone-600 line-clamp-2 md:text-sm">
+            {project.description}
+          </p>
+
+          {/* Tech Tags - smaller */}
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {project.tags.slice(0, 4).map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full bg-stone-100 px-2.5 py-0.5 text-[10px] font-medium text-stone-700"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Metrics (optional) - smaller */}
+          {project.metrics && (
+            <div className="mt-2 flex flex-wrap gap-3 text-xs text-stone-600">
+              {Object.entries(project.metrics).map(([key, value]) => (
+                <span key={key} className="flex items-center gap-1">
+                  <span className="font-medium text-[#2D2016]">{value}</span>
+                  <span className="text-stone-400">•</span>
+                  <span className="capitalize text-[10px]">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Progress Bar (smaller) */}
+          {project.status === "In Progress" && project.progress && (
+            <div className="mt-2">
+              <div className="h-1 w-full rounded-full bg-stone-200">
+                <div 
+                  className="h-1 rounded-full bg-[#B5773A] transition-all"
+                  style={{ width: `${project.progress}%` }}
+                />
+              </div>
+              <span className="text-[10px] text-stone-500">{project.progress}% complete</span>
+            </div>
+          )}
+
+          {/* Action Buttons - smaller */}
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            {project.liveLink && (
+              <a
+                href={project.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full bg-[#2D2016] px-4 py-1.5 text-xs font-medium text-white transition hover:bg-[#5C3D1E] hover:scale-105"
+              >
+                <ExternalLink className="h-3 w-3" />
+                Live Demo
+              </a>
+            )}
+            
+            {project.githubLink && (
+              <a
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full border border-stone-200 px-4 py-1.5 text-xs font-medium text-stone-600 transition hover:border-stone-300 hover:bg-stone-50"
+              >
+                <Code2 className="h-3 w-3" />
+                Code
+              </a>
+            )}
+
+            {/* Case Study Link - smaller */}
+            {project.caseStudy && (
+              <a
+                href={project.caseStudy}
+                className="inline-flex items-center gap-1 text-xs font-medium text-[#B5773A] transition hover:text-[#8A5C2E]"
+              >
+                Read more
+                <ArrowRight className="h-3 w-3" />
+              </a>
+            )}
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
   );
 }
