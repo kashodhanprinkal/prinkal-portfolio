@@ -184,7 +184,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Mobile Back to Top */}
+      {/*Mobile Back to Top*/}
       <div className="mt-8 flex justify-center sm:hidden">
         <motion.button
           type="button"

@@ -128,7 +128,7 @@ export default function About() {
                   ))}
                 </div>
 
-                {/* Handwritten note */}
+                {/*Handwritten note*/}
                 <div className="mt-10 -rotate-2 border-l-2 border-[var(--accent)]/40 pl-4">
                   <p className="font-mono text-sm leading-6 text-[var(--accent)]">
                     "Make it work.
