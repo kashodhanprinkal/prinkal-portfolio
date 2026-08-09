@@ -50,14 +50,21 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Prinkal Kashodhan",
-  jobTitle: "Full Stack Software Developer",
+  jobTitle: "Software Developer",
   url: "https://prinkal-code.netlify.app/",
   email: "mailto:kashodhanprinkal@gmail.com",
+
   sameAs: [
     "https://github.com/kashodhanprinkal",
     "https://www.linkedin.com/in/prinkal-kashodhan/",
   ],
+
   knowsAbout: [
+    "Software Development",
+    "Frontend Development",
+    "Backend Development",
+    "Quality Assurance",
+    "Web Development",
     "React",
     "Next.js",
     "JavaScript",
@@ -66,16 +73,9 @@ const personJsonLd = {
     "Express.js",
     "MongoDB",
     "SQL",
-    "Tailwind CSS",
-    "HTML",
-    "CSS",
     "REST APIs",
     "Git",
     "GitHub",
-    "Full Stack Development",
-    "Frontend Development",
-    "Backend Development",
-    "Web Development",
   ],
 };
 
