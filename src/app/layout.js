@@ -4,14 +4,41 @@ import Preloader from "@/components/ui/Preloader";
 import { Caveat } from "next/font/google";
 
 export const metadata = {
-title: "Prinkal Kashodhan | Full Stack Software Developer",
+  title: "Prinkal Kashodhan | Software Developer & Full Stack Engineer",
 
-description:
-  "I'm Prinkal Kashodhan, a Full Stack Software Developer passionate about transforming ideas into modern, scalable, and high-performance digital experiences. Explore my projects, skills, and software development journey.",
+  description:
+    "Prinkal Kashodhan is a Software Developer who transforms ideas into refined digital experiences where creativity meets technology. I craft intuitive, high-performance products with seamless interactions that captivate users and leave a lasting impression. Open to freelance, remote, and hybrid opportunities across India.",
+
+  keywords: [
+  "Prinkal Kashodhan",
+  "Prinkal Kashodhan Developer",
+  "Software Developer",
+  "Software Developer India",
+  "Full Stack Developer",
+  "Frontend Developer",
+  "Backend Developer",
+  "Web Developer",
+  "React Developer",
+  "Next.js Developer",
+  "JavaScript Developer",
+  "Node.js Developer",
+  "QA Engineer",
+  "Software Tester",
+  "Web Testing",
+  "API Testing",
+  "Freelance Developer",
+  "Freelance Developer India",
+  "Remote Developer India",
+  "Hybrid Developer India",
+  "Web Development Services",
+  "Custom Web Development",
+],
+
   verification: {
     google: "Z4T7kg-qTEAYobLC4B14y0NLSbKHaemDgn99vWfMLiQ",
   },
 };
+
 
 const caveat = Caveat({
   subsets: ["latin"],
