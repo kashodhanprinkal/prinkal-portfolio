@@ -70,8 +70,8 @@ export default function Footer() {
                   right-[-7px]
                   h-5
                   rotate-[-2deg]
-                  rounded-[45%_55%_50%_40%]
-                  bg-[#D9F99D]
+                  rounded-[62%_55%_70%_70%]
+                  bg-[#acdb55]
                 "
               />
               <svg
@@ -132,7 +132,7 @@ export default function Footer() {
               whileTap={{ scale: 0.92 }}
               transition={{ duration: 0.25 }}
               aria-label="Back to top"
-              className="hidden sm:flex h-9 w-9 items-center justify-center rounded-full border border-neutral-300 bg-white text-sm text-neutral-700 shadow-sm transition-colors hover:border-[#B5773A] hover:text-[#B5773A]"
+              className="hidden sm:flex h-9 w-9 items-center justify-center rounded-full border border-neutral-300 bg-black text-sm text-neutral-700 shadow-sm transition-colors hover:border-[#B5773A] hover:text-[#3b230b]"
             >
               ↑
             </motion.button>

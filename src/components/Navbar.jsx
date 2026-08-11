@@ -2,8 +2,14 @@
 
 import * as React from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { Navigation, Menu } from "lucide-react";
+import { Menu, Sun, Moon } from "lucide-react";
+import { Story_Script } from "next/font/google";
 import { cn } from "@/lib/utils";
+
+const storyScript = Story_Script({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -14,6 +20,7 @@ const navItems = [
 ];
 
 const EXPAND_SCROLL_THRESHOLD = 80;
+const BLUR_SCROLL_THRESHOLD = 20;
 
 const containerVariants = {
   expanded: {
@@ -45,11 +52,6 @@ const containerVariants = {
   },
 };
 
-const logoVariants = {
-  expanded: { opacity: 1, x: 0, rotate: 0, transition: { type: "spring", damping: 15 } },
-  collapsed: { opacity: 0, x: -25, rotate: -180, transition: { duration: 0.3 } },
-};
-
 const itemVariants = {
   expanded: { opacity: 1, x: 0, scale: 1, transition: { type: "spring", damping: 15 } },
   collapsed: { opacity: 0, x: -20, scale: 0.95, transition: { duration: 0.2 } },
@@ -71,13 +73,28 @@ const collapsedIconVariants = {
 
 export default function Navbar() {
   const [isExpanded, setExpanded] = React.useState(true);
+  const [isDark, setIsDark] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
 
   const { scrollY } = useScroll();
   const lastScrollY = React.useRef(0);
   const scrollPositionOnCollapse = React.useRef(0);
 
+  React.useEffect(() => {
+    setIsDark(document.documentElement.classList.contains("dark"));
+  }, []);
+
+  const toggleTheme = () => {
+    const next = !isDark;
+    setIsDark(next);
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
+  };
+
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = lastScrollY.current;
+
+    setIsScrolled(latest > BLUR_SCROLL_THRESHOLD);
 
     if (isExpanded && latest > previous && latest > 150) {
       setExpanded(false);
@@ -101,27 +118,33 @@ export default function Navbar() {
   };
 
   return (
-    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50">
+    <div
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3 transition-all duration-300",
+        isScrolled
+          ? "bg-background/70 backdrop-blur-md border-b border-border shadow-sm"
+          : "bg-transparent border-b border-transparent"
+      )}
+    >
+      {/* Name / Logo - left */}
+      <span className={cn(storyScript.className, "text-3xl text-foreground whitespace-nowrap ")}>
+        Prinkal    kashodhan
+      </span>
+
+      {/* Collapsing nav - center */}
       <motion.nav
-        initial={{ y: -80, opacity: 0 }}
+        initial={{ y: -40, opacity: 0 }}
         animate={isExpanded ? "expanded" : "collapsed"}
         variants={containerVariants}
         whileHover={!isExpanded ? { scale: 1.1 } : {}}
         whileTap={!isExpanded ? { scale: 0.95 } : {}}
         onClick={handleNavClick}
         className={cn(
-          "flex items-center overflow-hidden rounded-full border border-border bg-background/80 shadow-lg backdrop-blur-sm h-12",
-          isExpanded ? "px-4" : "px-0",
-          !isExpanded && "cursor-pointer justify-center"
+          "relative flex items-center overflow-hidden rounded-full h-10",
+          isExpanded ? "px-2" : "px-0",
+          !isExpanded && "cursor-pointer justify-center bg-muted/60"
         )}
       >
-        <motion.div
-          variants={logoVariants}
-          className="flex-shrink-0 flex items-center font-semibold"
-        >
-          <Navigation className="h-5 w-5 text-foreground mx-2" />
-        </motion.div>
-
         <div className="flex items-center gap-1 sm:gap-4">
           {navItems.map((item) => (
             <motion.a
@@ -145,6 +168,15 @@ export default function Navbar() {
           </motion.div>
         </div>
       </motion.nav>
+
+      {/* Theme toggle - right 
+      <button
+        onClick={toggleTheme}
+        aria-label="Toggle theme"
+        className="flex items-center justify-center h-9 w-9 rounded-full text-foreground hover:bg-muted/60 transition-colors"
+      >
+        {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+      </button>*/}
     </div>
   );
 }
