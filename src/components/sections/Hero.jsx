@@ -6,25 +6,32 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center overflow-hidden">
       <ParticleOrbitEffect colorRange={[1, 360]} />
 
-      <div className="relative z-10 px-6 pointer-events-none w-full md:w-auto text-center md:text-left">
-        
+      <div
+        className="
+          relative z-10
+          w-full
+          px-6
+          md:pl-16
+          lg:pl-24
+          text-center md:text-left
+          pointer-events-none
+        "
+      >
         {/* Greeting */}
-        <div className="mx-auto md:mx-0">
-          <h3 className="text-2xl md:text-4xl whitespace-nowrap">
-            Hello, I'm
+        <div>
+          <h3 className="text-xl md:text-2xl whitespace-nowrap">
+            Hey!! I turn ideas into reality....
           </h3>
-           {/*<h1 className="text-2xl font-extralight md:text-8xl text-gray-600">
-              Prinkal Kashodhan....</h1>*/}
-        </div> 
+        </div>
 
         {/* Typing Effect */}
         <div
           className="
             relative
-            mt-[-10]
+            mt-2
             h-[60px] md:h-[80px]
             w-[340px] sm:w-[500px] md:w-[620px]
             max-w-full
@@ -59,8 +66,6 @@ export default function Hero() {
 
         {/* CTA */}
         <div className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start pointer-events-auto">
-          
-          {/* Hire Me */}
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.05 }}
@@ -86,17 +91,14 @@ export default function Hero() {
               className="
                 absolute inset-0
                 bg-gradient-to-r
-                from-blue-500
-                to-purple-500
+                from-blue-500 to-purple-500
                 opacity-0
                 group-hover:opacity-100
-                transition-opacity
-                duration-300
+                transition-opacity duration-300
               "
             />
           </motion.a>
 
-          {/* Download Resume */}
           <motion.a
             href="/prinkal.resume.pdf"
             download="Prinkal_Kashodhan_Resume.pdf"
@@ -104,8 +106,7 @@ export default function Hero() {
             whileTap={{ scale: 0.95 }}
             className="
               px-8 py-3
-              border-2
-              border-border
+              border-2 border-border
               rounded-full
               font-medium
               hover:bg-muted
@@ -115,7 +116,6 @@ export default function Hero() {
           >
             Download Resume
           </motion.a>
-
         </div>
       </div>
     </section>
