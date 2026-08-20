@@ -51,57 +51,37 @@ export default function Hero() {
         </motion.p>
 
        {/* Rotating Text */}
-<motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.7, delay: 0.15 }}
+<p
   className="
-    relative
-    mt-5
     w-full
-    max-w-4xl
-    min-h-[75px]
-    sm:min-h-[95px]
-    md:min-h-[120px]
-    flex
-    items-center
-    justify-center
-    md:justify-start
-    px-2
-    sm:px-3
+    max-w-full
+    text-[clamp(1.8rem,7vw,5rem)]
+    leading-[1.3]
+    font-bold
+    tracking-tight
+
+    text-transparent
+    [-webkit-text-stroke:1.2px_theme(colors.stone.900)]
+    sm:[-webkit-text-stroke:1.7px_theme(colors.stone.900)]
+    md:[-webkit-text-stroke:2px_theme(colors.stone.900)]
+
+    text-center
+    md:text-left
+    whitespace-normal
+    break-words
     overflow-visible
   "
 >
-  <p
-    className="
-      w-full
-      max-w-full
-      text-[clamp(1.8rem,7vw,5rem)]
-      leading-[1.3]
-      font-bold
-      tracking-tight
-      text-
-      [-webkit-text-stroke:1.2px_theme(colors.stone.900)]
-      sm:[-webkit-text-stroke:1.7px_theme(colors.stone.900)]
-      md:[-webkit-text-stroke:2px_theme(colors.stone.900)]
-      text-center
-      md:text-left
-      whitespace-normal
-      break-words
-      overflow-visible
-    "
-  >
-    <RotatingText
-      words={[
-        "Frontend Developer",
-        "React.js Developer",
-        "JavaScript Developer",
-        "Web Designer",
-      ]}
-      interval={2200}
-    />
-  </p>
-</motion.div>
+  <RotatingText
+    words={[
+      "Frontend Developer",
+      "React.js Developer",
+      "JavaScript Developer",
+      "Web Designer",
+    ]}
+    interval={2200}
+  />
+</p>
 
         {/* Description 
         <motion.p

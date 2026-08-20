@@ -122,20 +122,60 @@ export default function Footer() {
             })}
             
             {/* Back to Top Button - Desktop */}
-            <motion.button
-              type="button"
-              onClick={scrollToTop}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -4, scale: 1.15, rotate: -3 }}
-              whileTap={{ scale: 0.92 }}
-              transition={{ duration: 0.25 }}
-              aria-label="Back to top"
-              className="hidden sm:flex h-9 w-9 items-center justify-center rounded-full border border-neutral-300 bg-black text-sm text-neutral-700 shadow-sm transition-colors hover:border-[#B5773A] hover:text-[#3b230b]"
-            >
-              ↑
-            </motion.button>
+<motion.button
+  type="button"
+  onClick={scrollToTop}
+  initial={{ opacity: 0, y: 10 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  whileHover={{ y: -4, scale: 1.12 }}
+  whileTap={{ scale: 0.92 }}
+  transition={{ duration: 0.25 }}
+  aria-label="Back to top"
+  className="
+    group
+    hidden sm:flex
+    h-10 w-10
+    items-center justify-center
+    rounded-full
+    border border-neutral-700
+    bg-black
+    text-white
+    shadow-md
+    transition-all duration-300
+    hover:border-white
+    hover:bg-neutral-900
+    hover:shadow-[0_0_18px_rgba(255,255,255,0.15)]
+  "
+>
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="
+      text-neutral-400
+      transition-all duration-300
+      group-hover:-translate-y-1
+      group-hover:text-white
+    "
+  >
+    <path
+      d="M12 19V5"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+    />
+    <path
+      d="M6.5 10.5L12 5L17.5 10.5"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+</motion.button>
           </div>
         </div>
 
@@ -149,7 +189,7 @@ export default function Footer() {
             aria-hidden="true"
           >
             <path
-              d="M2 5 C80 1,150 9,250 5 S420 2,498 6"
+              d="M2 5 C80 1,150 10,250 10 S420 2,498 6"
               stroke="#d4d4d4"
               strokeWidth="2"
               strokeLinecap="round"
